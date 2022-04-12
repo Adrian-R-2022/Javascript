@@ -1,0 +1,11 @@
+.container {
+  position: relative;
+  top: 120px;
+
+  padding: 3em;
+  box-shadow: 0 0 10px #999;
+}
+
+h1 {
+  text-align: center;
+}

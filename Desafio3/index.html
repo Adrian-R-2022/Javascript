@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promedio del alumno</title>
+    <script src="desafio3.js"></script>
+    <script src="modal.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css" />
+    <link rel="stylesheet" href="estilos.css" />
+  </head>
+  <body>
+    <div class="container grid-sm">
+      <h1>Registro del Alumno</h1>
+      <form>
+        <div class="form-group">
+          <label class="form-label">Nombre:</label>
+          <input type="text" class="form-input" autofocus />
+          <label class="form-label">Apellidos:</label>
+          <input type="text" class="form-input" autofocus />
+        </div>
+        <div class="form-group">
+          <button type="button" name="button" class="btn btn-success" onclick="mostrarModal()">Registrar notas</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="modal modal-sm" id="modal-registro">
+      <a href="#close" class="modal-overlay" aria-label="Close"></a>
+
+      <div class="modal-container">
+        <div class="modal-header">
+          <a href="javascript:cerrarModal()" class="btn btn-clear float-right" aria-label="Close"></a>
+          <div class="modal-title h5">Registro de notas</div>
+        </div>
+        <div class="modal-body">
+          <div class="content">
+            <div class="form-group">
+              <label class="form-label">Asignatura:</label>
+              <input type="text" class="form-input" />
+              <label class="form-label">No. Nota a promediar:</label>
+              <input type="text" class="form-input" />
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer"></div>
+        <button type="button" class="btn btn-success">Registrar</button>
+        <br />
+      </div>
+    </div>
+  </body>
+</html>

@@ -101,6 +101,8 @@ listaAlumnos.push(alumno1);
 listaAlumnos.push(alumno2);
 listaAlumnos.push(alumno3);
 
+console.log(listaAlumnos);
+
 listaAlumnos.forEach((elem) => {
   console.log(elem);
 });

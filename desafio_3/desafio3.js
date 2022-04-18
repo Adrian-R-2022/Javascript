@@ -22,7 +22,7 @@ class Alumno {
 
     for (let i = 1; i <= nnotas; i++) {
       notas = parseFloat(prompt("Digita la nota  " + i));
-      while (notas > 10) {
+      while (notas > 10 || isNaN(notas)) {
         notas = parseFloat(prompt("Digite numero del 1 al 10"));
       }
       this.notas.push(notas);

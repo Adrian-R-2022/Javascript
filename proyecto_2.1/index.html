@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SISTEMA DE PROMEDIO DE ALUMNOS</title>
+    <link href="estilo.css" rel="stylesheet" type="text/css" media="all" />
+  </head>
+  <body>
+    <h1 class="header-ed">SISTEMA DE PROMEDIO DE ALUMNOS</h1>
+
+    <div class="art-bothside">
+      <div class="mid-cls">
+        <div class="art-right-ed">
+          <h2>Registro de alumnos</h2>
+
+          <form action="#" method="post">
+            <div class="main">
+              <div class="form-left-to-em">
+                <input type="text" name="nombre" id="nombre" placeholder="Nombre" required="" />
+              </div>
+              <div class="form-left-to-em">
+                <input type="text" name="apellidoP" id="apellidoP" placeholder="Apellido Paterno" required />
+              </div>
+              <div class="form-left-to-em">
+                <input type="text" name="apellidoP" id="apellidoM" placeholder="Apellidos Materno" required />
+              </div>
+              <div class="form-left-to-em">
+                <input type="text" name="asignatura" id="asignatura" placeholder="Asignatura" required="" />
+              </div>
+              <div class="form-left-to-em">
+                <input type="text" name="asignatura" id="nota1" placeholder="Nota 1" required="" />
+              </div>
+              <div class="form-left-to-em">
+                <input type="text" name="asignatura" id="nota2" placeholder="Nota 2" required="" />
+              </div>
+              <div class="form-left-to-em">
+                <input type="text" name="asignatura" id="nota3" placeholder="Nota 3" required="" />
+              </div>
+              <div>
+                <button type="submit" id="agregarNotas">Registrar notas</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="art-left-ed">
+          <div class="card bg-info text-center">
+            <h4>Resultados</h4>
+          </div>
+          <div>
+            <label>Buscar</label>
+            <input type="text" id="buscar-input" />
+          </div>
+          <div class="table-responsive p-2">
+            <table id="datosTabla" class="table table-striped table-hover">
+              <thead class="text-center font-weight-bold">
+                <tr class="bg-secondary text-white">
+                  <td>Nombre</td>
+                  <td>Apellido Paterno</td>
+                  <td>Apellidos Materno</td>
+                  <td>Asignatura</td>
+                  <td>Nota 1</td>
+                  <td>Nota 2</td>
+                  <td>Nota 3</td>
+                  <td>Promedio</td>
+                  <td>Estado</td>
+                  <td>Borrar</td>
+                </tr>
+              </thead>
+              <tbody id="agregarTabla"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css" />
+  </body>
+</html>

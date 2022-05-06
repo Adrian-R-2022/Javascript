@@ -21,6 +21,7 @@ class Alumno {
 }
 
 botonnotas.addEventListener("click", (e) => {
+  e.preventDefault();
   //Buscamos todos los datos de nuestro formulario
   let nombreAlumno = document.getElementById("nombre").value.toUpperCase(),
     apellidoP = document.getElementById("apellidoP").value.toUpperCase(),
@@ -39,22 +40,32 @@ botonnotas.addEventListener("click", (e) => {
   validarCampoNombre(nombreAlumno);
 
   //Validar el campo apellido paterno
-  validarCampoApellidoP(apellidoP);
+  if (hay_error == "N") {
+    validarCampoApellidoP(apellidoP);
+  }
 
   //Validar el campo apellido materno
-  validarCampoApellidoM(apellidoM);
+  if (hay_error == "N") {
+    validarCampoApellidoM(apellidoM);
+  }
 
   //Validar el campo asignatura
-  validarCampoAsignatura(asignatura);
+  if (hay_error == "N") {
+    validarCampoAsignatura(asignatura);
+  }
 
   //validar tres notas a promediar
-  validarNotas(nota1, nota2, nota3);
+  if (hay_error == "N") {
+    validarNotas(nota1, nota2, nota3);
+  }
 
-  //Calcula el promedio de las tres notas
-  promedio = (parseFloat(nota1) + parseFloat(nota2) + parseFloat(nota3)) / 3;
+  if (hay_error == "N") {
+    //Calcula el promedio de las tres notas
+    promedio = (parseFloat(nota1) + parseFloat(nota2) + parseFloat(nota3)) / 3;
 
-  //Promedio menor o igual a 10 entonces aprobado, caso contrario aprobado
-  promedio >= 7 && promedio <= 10 ? (estatus = value = "APROBADO") : (estatus = value = "DESAPROBADO");
+    //Promedio menor o igual a 10 entonces aprobado, caso contrario aprobado
+    promedio >= 7 && promedio <= 10 ? (estatus = value = "APROBADO") : (estatus = value = "DESAPROBADO");
+  }
 
   if (hay_error == "N") {
     //Crear a los alumnos y llena los datos a la tabla
@@ -76,24 +87,24 @@ botonnotas.addEventListener("click", (e) => {
     localStorage.setItem("Alumnos", JSON.stringify(listaNuevaAlumno));
 
     e.preventDefault();
+    limpiarCampos();
+    mostrarAlertGuardado();
   }
-
-  limpiarCampos();
 });
 
 function validarCampoNombre(campo) {
   if (campo.trim().length == 0) {
-    alert("El dato que ingresó es incorrecto, ingrese el nombre del alumno.");
+    Swal.fire("El dato que ingresó es incorrecto, Ingrese el nombre del alumno", "", "error");
     hay_error = "S";
     return false;
   }
   if (campo.length > 30) {
-    alert("El nombre es muy largo");
+    Swal.fire("El nombre que ingresó es muy largo, Ingrese el nombre del alumno", "", "error");
     hay_error = "S";
     return false;
   }
   if (!isNaN(campo)) {
-    alert("El dato que ingresó es incorrecto, ingrese el nombre del alumno: ");
+    Swal.fire("El dato que ingresó es incorrecto, Ingrese el nombre del alumno", "", "error");
     hay_error = "S";
     return false;
   }
@@ -101,17 +112,17 @@ function validarCampoNombre(campo) {
 
 function validarCampoApellidoP(campo) {
   if (campo == null || campo.trim() == "") {
-    alert("El dato que ingresó es incorrecto. Ingrese el apellido paterno:");
+    Swal.fire("El dato que ingresó es incorrecto, Ingrese el apellido paterno del alumno", "", "error");
     hay_error = "S";
     return false;
   }
   if (campo.length > 20) {
-    alert("El nombre es muy largo");
+    Swal.fire("El apellido paterno que ingresó es muy largo, Ingrese el apellido paterno del alumno", "", "error");
     hay_error = "S";
     return false;
   }
   if (!isNaN(campo)) {
-    alert("El dato que ingresó es incorrecto, ingrese el apellido paterno: ");
+    Swal.fire("El dato que ingresó es incorrecto, Ingrese el apellido paterno del alumno", "", "error");
     hay_error = "S";
     return false;
   }
@@ -119,17 +130,17 @@ function validarCampoApellidoP(campo) {
 
 function validarCampoApellidoM(campo) {
   if (campo == null || campo.trim() == "") {
-    alert("El dato que ingresó es incorrecto. Ingrese el apellido materno:");
+    Swal.fire("El dato que ingresó es incorrecto, Ingrese el apellido materno del alumno", "", "error");
     hay_error = "S";
     return false;
   }
   if (campo.length > 20) {
-    alert("El nombre es muy largo");
+    Swal.fire("El apellido paterno que ingresó es muy largo, Ingrese el apellido paterno del alumno", "", "error");
     hay_error = "S";
     return false;
   }
   if (!isNaN(campo)) {
-    alert("El dato que ingresó es incorrecto, ingrese el apellido materno: ");
+    Swal.fire("El dato que ingresó es incorrecto, Ingrese el apellido materno del alumno", "", "error");
     hay_error = "S";
     return false;
   }
@@ -137,17 +148,17 @@ function validarCampoApellidoM(campo) {
 
 function validarCampoAsignatura(campo) {
   if (campo == null || campo.trim() == "") {
-    alert("El dato que ingresó es incorrecto, ingrese la asignatura: ");
+    Swal.fire("El dato que ingresó es incorrecto, Ingrese la asignatura del alumno", "", "error");
     hay_error = "S";
     return false;
   }
   if (campo.length > 25) {
-    alert("El nombre es muy largo");
+    Swal.fire("La asignatura que ingresó es muy largo, Ingrese la asignatura del alumno", "", "error");
     hay_error = "S";
     return false;
   }
   if (!isNaN(campo)) {
-    alert("El dato que ingresó es incorrecto, ingrese la asignatura: ");
+    Swal.fire("El dato que ingresó es incorrecto, Ingrese la asignatura del alumno", "", "error");
     hay_error = "S";
     return false;
   }
@@ -155,20 +166,24 @@ function validarCampoAsignatura(campo) {
 
 function validarNotas(nota1, nota2, nota3) {
   if (nota1 === "" || nota2 === "" || nota3 === "") {
-    alert("No ingreso un numero, por favor ingrese la nota");
+    Swal.fire("No ingreso un numero, por favor ingrese la nota del alumno", "", "error");
     hay_error = "S";
     return false;
   }
   if (!(nota1 >= 5 && nota1 <= 10) || !(nota2 >= 5 && nota2 <= 10) || !(nota3 >= 5 && nota3 <= 10)) {
-    alert("Digite numero del 5 al 10");
+    Swal.fire("Digite número del 5 al 10", "", "error");
     hay_error = "S";
     return false;
   }
   if (isNaN(nota1) || isNaN(nota3) || isNaN(nota3)) {
-    alert("Digite numero");
+    Swal.fire("No ingreso un numero, por favor ingrese la nota del alumno", "", "error");
     hay_error = "S";
     return false;
   }
+}
+
+function mostrarAlertGuardado() {
+  Swal.fire("Registro exitoso", "", "success");
 }
 
 function limpiarCampos() {
@@ -277,3 +292,7 @@ const eliminarAlumno = (id) => {
   localStorage.setItem("Alumnos", JSON.stringify(listaFiltrada));
   location.reload();
 };
+
+/*function mostrarAlertEliminado() {
+  Swal.fire("Registro eliminado", "", "error");
+}*/

@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "asignatura": "JAVASCRIPT"
+  },
+  {
+    "id": 2,
+    "asignatura": "MATEMÁTICAS DISCRETAS"
+  },
+  {
+    "id": 3,
+    "asignatura": "PROGRAMACIÓN I"
+  },
+  {
+    "id": 4,
+    "asignatura": "PROGRAMACIÓN II"
+  },
+  {
+    "id": 5,
+    "asignatura": "QUIMICA"
+  },
+  {
+    "id": 6,
+    "asignatura": "FÍSICA"
+  }
+]

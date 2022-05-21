@@ -1,9 +1,9 @@
-let hay_error = "N",
-  promedio = 0,
-  estatus = 0;
+let hay_error = "N";
+let promedio = 0;
+let estatus = 0;
 let botonnotas = document.getElementById("agregarNotas");
-let listaAlumnos = [],
-  listaNuevaAlumno = [];
+let listaAlumnos = [];
+let listaNuevaAlumno = [];
 
 class Alumno {
   constructor(id, nombreAlumno, apellidoP, apellidoM, asignatura, nota1, nota2, nota3, promedio) {
@@ -31,6 +31,7 @@ botonnotas.addEventListener("click", (e) => {
   let nota2 = document.getElementById("nota2").value;
   let nota3 = document.getElementById("nota3").value;
 
+  //indica si hay error en los campos q no ingrese datos a la tabla.
   hay_error = "N";
 
   //Declaro variable y creo un nuevo id.
@@ -94,7 +95,7 @@ botonnotas.addEventListener("click", (e) => {
 
 function validarCampoNombre(campo) {
   if (campo.trim().length == 0) {
-    Swal.fire("El dato que ingresó es incorrecto, Ingrese el nombre del alumno", "", "error");
+    Swal.fire("No ingrese ningún dato o el campo esta vacío, Ingrese el nombre del alumno", "", "error");
     hay_error = "S";
     return false;
   }
@@ -108,11 +109,16 @@ function validarCampoNombre(campo) {
     hay_error = "S";
     return false;
   }
+  if (campo.length != /[A-Za-z\s]*/g.exec(campo)[0].length) {
+    Swal.fire("Su dato contiene número ó tilde, ingrese el nombre del alumno", "", "error");
+    hay_error = "S";
+    return false;
+  }
 }
 
 function validarCampoApellidoP(campo) {
   if (campo == null || campo.trim() == "") {
-    Swal.fire("El dato que ingresó es incorrecto, Ingrese el apellido paterno del alumno", "", "error");
+    Swal.fire("No ingrese ningún dato o el campo esta vacío, Ingrese el apellido paterno del alumno", "", "error");
     hay_error = "S";
     return false;
   }
@@ -123,6 +129,11 @@ function validarCampoApellidoP(campo) {
   }
   if (!isNaN(campo)) {
     Swal.fire("El dato que ingresó es incorrecto, Ingrese el apellido paterno del alumno", "", "error");
+    hay_error = "S";
+    return false;
+  }
+  if (campo.length != /[A-Za-z\s]*/g.exec(campo)[0].length) {
+    Swal.fire("Su dato contiene número ó tilde, ingrese el apellido paterno del alumno", "", "error");
     hay_error = "S";
     return false;
   }
@@ -130,7 +141,7 @@ function validarCampoApellidoP(campo) {
 
 function validarCampoApellidoM(campo) {
   if (campo == null || campo.trim() == "") {
-    Swal.fire("El dato que ingresó es incorrecto, Ingrese el apellido materno del alumno", "", "error");
+    Swal.fire("No ingrese ningún dato o el campo esta vacío, ingrese el apellido materno del alumno", "", "error");
     hay_error = "S";
     return false;
   }
@@ -141,6 +152,11 @@ function validarCampoApellidoM(campo) {
   }
   if (!isNaN(campo)) {
     Swal.fire("El dato que ingresó es incorrecto, Ingrese el apellido materno del alumno", "", "error");
+    hay_error = "S";
+    return false;
+  }
+  if (campo.length != /[A-Za-z\s]*/g.exec(campo)[0].length) {
+    Swal.fire("Su dato contiene número ó tilde, ingrese el apellido materno del alumno", "", "error");
     hay_error = "S";
     return false;
   }
@@ -186,7 +202,7 @@ function limpiarCampos() {
   document.getElementById("nota3").value = "";
 }
 
-//Buscar por nombre al dar boton enter ya sea por nombre y apellidos
+//Buscar por nombre al dar boton enter ya sea por nombre y apellido paterno, materno, asignatura y el estatus.
 let buscar = document.getElementById("buscar-input");
 let arrayfila;
 let filaGuardada;

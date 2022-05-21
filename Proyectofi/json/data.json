@@ -5,15 +5,15 @@
   },
   {
     "id": 2,
-    "asignatura": "MATEMÁTICAS DISCRETAS"
+    "asignatura": "MATEMATICAS DISCRETAS"
   },
   {
     "id": 3,
-    "asignatura": "PROGRAMACIÓN I"
+    "asignatura": "PROGRAMACION I"
   },
   {
     "id": 4,
-    "asignatura": "PROGRAMACIÓN II"
+    "asignatura": "PROGRAMACION II"
   },
   {
     "id": 5,
@@ -21,6 +21,14 @@
   },
   {
     "id": 6,
-    "asignatura": "FÍSICA"
+    "asignatura": "FISICA"
+  },
+  {
+    "id": 7,
+    "asignatura": "INGLES"
+  },
+  {
+    "id": 8,
+    "asignatura": "BASE DE DATOS"
   }
 ]
